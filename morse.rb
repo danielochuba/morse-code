@@ -11,23 +11,7 @@ MORSE_CODE = {
 }.freeze
 
 def decode_char(char)
-  puts MORSE_CODE[char].upcase
-end
-
-def morse_code(string)
-  decoded_text = []
-  words = string.split('   ')
-
-  words.each do |word|
-    new_word = word.split
-    new_word.each do |single_word|
-      value = MORSE_CODE[single_word]
-      decoded_text << value if value
-    end
-    decoded_text << ' '
-  end
-
-  puts decoded_text.join
+  MORSE_CODE[char].upcase
 end
 
 def decode_word(string)
@@ -35,12 +19,24 @@ def decode_word(string)
   word = string.split
 
   word.each do |char|
-    MORSE_CODE.each do |key, value|
-      text << value if key == char
-    end
+    decoded_char = decode_char(char)
+    text << decoded_char if decoded_char
   end
 
-  puts text.join
+  text.join
+end
+
+def morse_code(string)
+  decoded_text = []
+  words = string.split('   ')
+
+  words.each do |word|
+    decoded_word = decode_word(word)
+    decoded_text << decoded_word if decoded_word
+    decoded_text << ' '
+  end
+
+  puts decoded_text.join
 end
 
 decode_char('-.')
