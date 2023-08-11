@@ -8,7 +8,7 @@ MORSE_CODE = {
   '...' => 'S', '-' => 'T', '..-' => 'U',
   '...-' => 'V', '.--'   => 'W', '-..-' => 'X',
   '-.--' => 'Y', '--..'  => 'Z'
-}
+}.freeze
 
 def decode_char(char)
   puts MORSE_CODE[char].upcase
